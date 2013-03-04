@@ -1,0 +1,24 @@
+diff --git a/tools/lib/lockdep/tests/ABCDBCDA.c b/tools/lib/lockdep/tests/ABCDBCDA.c
+index aadf11e..427ba56 100644
+--- a/tools/lib/lockdep/tests/ABCDBCDA.c
++++ b/tools/lib/lockdep/tests/ABCDBCDA.c
+@@ -3,12 +3,12 @@
+ 
+ void main(void)
+ {
+-	liblockdep_pthread_mutex_t a, b, c, d;
++	pthread_mutex_t a, b, c, d;
+ 
+-	liblockdep_pthread_mutex_init(&a, NULL);
+-	liblockdep_pthread_mutex_init(&b, NULL);
+-	liblockdep_pthread_mutex_init(&c, NULL);
+-	liblockdep_pthread_mutex_init(&d, NULL);
++	pthread_mutex_init(&a, NULL);
++	pthread_mutex_init(&b, NULL);
++	pthread_mutex_init(&c, NULL);
++	pthread_mutex_init(&d, NULL);
+ 
+ 	LOCK_UNLOCK_2(a, b);
+ 	LOCK_UNLOCK_2(c, d);
+-- 
+1.8.1.2

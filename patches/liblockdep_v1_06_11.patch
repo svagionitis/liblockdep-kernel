@@ -1,0 +1,24 @@
+diff --git a/tools/lib/lockdep/rbtree.c b/tools/lib/lockdep/rbtree.c
+new file mode 100644
+index 0000000..f7f4303
+--- /dev/null
++++ b/tools/lib/lockdep/rbtree.c
+@@ -0,0 +1 @@
++#include "../../../lib/rbtree.c"
+diff --git a/tools/lib/lockdep/uinclude/linux/rbtree.h b/tools/lib/lockdep/uinclude/linux/rbtree.h
+new file mode 100644
+index 0000000..965901d
+--- /dev/null
++++ b/tools/lib/lockdep/uinclude/linux/rbtree.h
+@@ -0,0 +1 @@
++#include "../../../include/linux/rbtree.h"
+diff --git a/tools/lib/lockdep/uinclude/linux/rbtree_augmented.h b/tools/lib/lockdep/uinclude/linux/rbtree_augmented.h
+new file mode 100644
+index 0000000..c375947
+--- /dev/null
++++ b/tools/lib/lockdep/uinclude/linux/rbtree_augmented.h
+@@ -0,0 +1,2 @@
++#define __always_inline
++#include "../../../include/linux/rbtree_augmented.h"
+-- 
+1.8.1.2

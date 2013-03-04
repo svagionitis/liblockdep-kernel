@@ -1,0 +1,18 @@
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 212c255..a64abfb 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -4637,6 +4637,11 @@ F:	drivers/lguest/
+ F:	include/linux/lguest*.h
+ F:	tools/lguest/
+ 
++LIBLOCK
++M:	Sasha Levin <sasha.levin@oracle.com>
++S:	Maintained
++F:	tools/lib/lockdep/
++
+ LINUX FOR IBM pSERIES (RS/6000)
+ M:	Paul Mackerras <paulus@au.ibm.com>
+ W:	http://www.ibm.com/linux/ltc/projects/ppc
+-- 
+1.8.1.2

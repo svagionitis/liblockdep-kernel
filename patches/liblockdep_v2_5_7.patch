@@ -1,0 +1,24 @@
+diff --git a/tools/lib/lockdep/tests/WW.c b/tools/lib/lockdep/tests/WW.c
+new file mode 100644
+index 0000000..4b1be0f
+--- /dev/null
++++ b/tools/lib/lockdep/tests/WW.c
+@@ -0,0 +1,16 @@
++#include <liblockdep/rwlock.h>
++
++void main(void)
++{
++	pthread_rwlock_t a, b;
++
++	liblockdep_init();
++	liblockdep_set_thread();
++
++	pthread_rwlock_init(&a, NULL);
++	pthread_rwlock_init(&b, NULL);
++
++	pthread_rwlock_wrlock(&a);
++	pthread_rwlock_rdlock(&b);
++	pthread_rwlock_wrlock(&a);
++}
+-- 
+1.8.1.2

@@ -1,0 +1,22 @@
+diff --git a/tools/lib/lockdep/run_tests.sh b/tools/lib/lockdep/run_tests.sh
+index 4dd32d1..211e91d 100755
+--- a/tools/lib/lockdep/run_tests.sh
++++ b/tools/lib/lockdep/run_tests.sh
+@@ -13,3 +13,15 @@ for i in `ls tests/*.c`; do
+ 	fi
+ 	rm tests/$testname
+ done
++
++for i in `ls tests/*.c`; do
++	testname=$(basename -s .c "$i")
++	gcc -o tests/$testname -lpthread -Iinclude $i &> /dev/null
++	echo -ne "(PRELOAD) $testname... "
++	if [ $(LD_PRELOAD=./liblockdep.so timeout 1 ./tests/$testname | wc -l) -gt 0 ]; then
++		echo "PASSED!"
++	else
++		echo "FAILED!"
++	fi
++	rm tests/$testname
++done
+-- 
+1.8.1.2

@@ -1,0 +1,46 @@
+diff --git a/tools/lib/lockdep/include/liblockdep/mutex.h b/tools/lib/lockdep/include/liblockdep/mutex.h
+index 5154a9d..6ebe733 100644
+--- a/tools/lib/lockdep/include/liblockdep/mutex.h
++++ b/tools/lib/lockdep/include/liblockdep/mutex.h
+@@ -1,8 +1,6 @@
+ #ifndef _LIBLOCKDEP_MUTEX_H
+ #define _LIBLOCKDEP_MUTEX_H
+ 
+-#ifdef __USE_LIBLOCKDEP
+-
+ #include <pthread.h>
+ #include "common.h"
+ 
+@@ -61,6 +59,8 @@ static inline int liblockdep_pthread_mutex_destroy(liblockdep_pthread_mutex_t *l
+ 	return pthread_mutex_destroy(&lock->mutex);
+ }
+ 
++#ifdef __USE_LIBLOCKDEP
++
+ #define pthread_mutex_t         liblockdep_pthread_mutex_t
+ #define pthread_mutex_init      liblockdep_pthread_mutex_init
+ #define pthread_mutex_lock      liblockdep_pthread_mutex_lock
+diff --git a/tools/lib/lockdep/include/liblockdep/rwlock.h b/tools/lib/lockdep/include/liblockdep/rwlock.h
+index 26f9a68..a1d820b 100644
+--- a/tools/lib/lockdep/include/liblockdep/rwlock.h
++++ b/tools/lib/lockdep/include/liblockdep/rwlock.h
+@@ -1,8 +1,6 @@
+ #ifndef _LIBLOCKDEP_RWLOCK_H
+ #define _LIBLOCKDEP_RWLOCK_H
+ 
+-#ifdef __USE_LIBLOCKDEP
+-
+ #include <pthread.h>
+ #include "common.h"
+ 
+@@ -77,6 +75,8 @@ static inline int liblockdep_rwlock_destroy(liblockdep_pthread_rwlock_t *lock)
+ 	return pthread_rwlock_destroy(&lock->rwlock);
+ }
+ 
++#ifdef __USE_LIBLOCKDEP
++
+ #define pthread_rwlock_t		liblockdep_pthread_rwlock_t
+ #define pthread_rwlock_init		liblockdep_pthread_rwlock_init
+ #define pthread_rwlock_rdlock		liblockdep_pthread_rwlock_rdlock
+-- 
+1.8.1.2

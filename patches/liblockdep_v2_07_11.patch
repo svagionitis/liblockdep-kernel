@@ -1,0 +1,32 @@
+diff --git a/tools/lib/lockdep/include/liblockdep/common.h b/tools/lib/lockdep/include/liblockdep/common.h
+index a675ef0..1bad66c 100644
+--- a/tools/lib/lockdep/include/liblockdep/common.h
++++ b/tools/lib/lockdep/include/liblockdep/common.h
+@@ -3,8 +3,11 @@
+ 
+ #include <pthread.h>
+ 
++#ifndef CALLER_ADDR0
+ #define CALLER_ADDR0 (__builtin_return_address(0))
+ #define _THIS_IP_ CALLER_ADDR0
++#endif
++
+ #define NR_LOCKDEP_CACHING_CLASSES 2
+ #define MAX_LOCKDEP_SUBCLASSES 8UL
+ 
+diff --git a/tools/lib/lockdep/uinclude/linux/kernel.h b/tools/lib/lockdep/uinclude/linux/kernel.h
+index da97ce8..af02ac1 100644
+--- a/tools/lib/lockdep/uinclude/linux/kernel.h
++++ b/tools/lib/lockdep/uinclude/linux/kernel.h
+@@ -28,7 +28,9 @@
+ #define noinline
+ #define list_add_tail_rcu list_add_tail
+ 
++#ifndef CALLER_ADDR0
+ #define _THIS_IP_ CALLER_ADDR0
+ #define CALLER_ADDR0 ((unsigned long)__builtin_return_address(0))
++#endif
+ 
+ #endif
+-- 
+1.8.1.2

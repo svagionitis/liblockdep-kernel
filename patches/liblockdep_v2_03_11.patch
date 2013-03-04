@@ -1,0 +1,75 @@
+diff --git a/tools/perf/builtin-sched.c b/tools/perf/builtin-sched.c
+index 53d9225..e1f0c44 100644
+--- a/tools/perf/builtin-sched.c
++++ b/tools/perf/builtin-sched.c
+@@ -468,8 +468,6 @@ static void *thread_func(void *ctx)
+ 	char comm2[22];
+ 	int fd;
+ 
+-	liblockdep_set_thread();
+-
+ 	free(parms);
+ 
+ 	sprintf(comm2, ":%s", this_task->comm);
+diff --git a/tools/perf/builtin-top.c b/tools/perf/builtin-top.c
+index c9b99ef..c9ff395 100644
+--- a/tools/perf/builtin-top.c
++++ b/tools/perf/builtin-top.c
+@@ -588,8 +588,6 @@ static void *display_thread_tui(void *arg)
+ 		.refresh	= top->delay_secs,
+ 	};
+ 
+-	liblockdep_set_thread();
+-
+ 	perf_top__sort_new_samples(top);
+ 
+ 	/*
+@@ -615,8 +613,6 @@ static void *display_thread(void *arg)
+ 	struct perf_top *top = arg;
+ 	int delay_msecs, c;
+ 
+-	liblockdep_set_thread();
+-
+ 	tcgetattr(0, &save);
+ 	tc = save;
+ 	tc.c_lflag &= ~(ICANON | ECHO);
+diff --git a/tools/perf/config/feature-tests.mak b/tools/perf/config/feature-tests.mak
+index 1f5a37e..20f8f7b 100644
+--- a/tools/perf/config/feature-tests.mak
++++ b/tools/perf/config/feature-tests.mak
+@@ -223,7 +223,6 @@ define SOURCE_LIBLOCKDEP
+ 
+ int main(void)
+ {
+-	liblockdep_init();
+ 	return 0;
+ }
+ endef
+diff --git a/tools/perf/perf.c b/tools/perf/perf.c
+index ddbd315..0f661fb 100644
+--- a/tools/perf/perf.c
++++ b/tools/perf/perf.c
+@@ -446,9 +446,6 @@ int main(int argc, const char **argv)
+ {
+ 	const char *cmd;
+ 
+-	liblockdep_init();
+-	liblockdep_set_thread();
+-
+ 	page_size = sysconf(_SC_PAGE_SIZE);
+ 
+ 	cmd = perf_extract_argv0_path(argv[0]);
+diff --git a/tools/perf/util/liblockdep.h b/tools/perf/util/liblockdep.h
+index 628a2f5..798263f 100644
+--- a/tools/perf/util/liblockdep.h
++++ b/tools/perf/util/liblockdep.h
+@@ -5,7 +5,5 @@
+ #else
+ 
+ #define LIBLOCKDEP_PTHREAD_MUTEX_INITIALIZER(mtx) PTHREAD_MUTEX_INITIALIZER
+-#define liblockdep_init()
+-#define liblockdep_set_thread()
+ 
+ #endif
+-- 
+1.8.1.2

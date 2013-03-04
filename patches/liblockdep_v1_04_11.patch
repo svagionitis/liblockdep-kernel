@@ -1,0 +1,14 @@
+diff --git a/tools/lib/lockdep/tests/AA.c b/tools/lib/lockdep/tests/AA.c
+index a443e65..0f782ff 100644
+--- a/tools/lib/lockdep/tests/AA.c
++++ b/tools/lib/lockdep/tests/AA.c
+@@ -8,6 +8,6 @@ void main(void)
+ 	pthread_mutex_init(&b, NULL);
+ 
+ 	pthread_mutex_lock(&a);
+-	pthread_mutex_unlock(&b);
++	pthread_mutex_lock(&b);
+ 	pthread_mutex_lock(&a);
+ }
+-- 
+1.8.1.2
