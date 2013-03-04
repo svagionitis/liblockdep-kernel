@@ -574,15 +574,15 @@ endif # NO_LIBUNWIND
 
 ifndef NO_LIBLOCKDEP
 # for linking with liblockdep library, run like:
-# make DEBUG=1 LIBLOCK_DIR=/path/to/linux.git/tools/lib/lockdep/
-ifdef LIBLOCKDEP_DIR
-	LIBLOCKDEP_CFLAGS  := -I$(LIBLOCKDEP_DIR)/include -D__USE_LIBLOCKDEP
-	LIBLOCKDEP_LDFLAGS := -L$(LIBLOCKDEP_DIR)/ -llockdep
+# make LIBLOCKDEP=1
+ifeq ($(LOCKDEP),1)
+	LIBLOCKDEP_CFLAGS  := -I../lib/lockdep/include -D__USE_LIBLOCKDEP
+	LIBLOCKDEP_LDFLAGS := -L../lib/lockdep/ -llockdep
 endif
 
 FLAGS_LIBLOCKDEP=$(LIBLOCKDEP_CFLAGS) $(ALL_CFLAGS) $(LIBLOCKDEP_LDFLAGS) $(ALL_LDFLAGS) $(EXTLIBS)
 ifneq ($(call try-cc,$(SOURCE_LIBLOCKDEP),$(FLAGS_LIBLOCKDEP),liblockdep),y)
-	msg := $(warning No liblockdep found.);
+	msg := $(warning No liblockdep support.);
 	NO_LIBLOCKDEP := 1
 endif # liblockdep support
 endif # NO_LIBLOCKDEP

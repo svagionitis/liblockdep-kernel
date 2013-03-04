@@ -3,7 +3,7 @@
 #include <liblockdep/mutex.h>
 
 #else
-#error WHAT?!
+
 #define LIBLOCKDEP_PTHREAD_MUTEX_INITIALIZER(mtx) PTHREAD_MUTEX_INITIALIZER
 #define liblockdep_init()
 #define liblockdep_set_thread()
