@@ -14,3 +14,8 @@ Building
 --------
 
 Not tested yet.
+
+How to use it
+-------------
+
+<pre>LD_PRELOAD=/path/to/liblockdep.so /path/to/my/program</pre>
