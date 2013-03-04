@@ -19,3 +19,10 @@ How to use it
 -------------
 
 <pre>LD_PRELOAD=/path/to/liblockdep.so /path/to/my/program</pre>
+
+References
+----------
+
+* Introductory article for liblockdep - http://lwn.net/Articles/536363/
+* Usage of liblockdep - https://lkml.org/lkml/2013/2/9/152
+* Removed from kernel (linux-next branch) - https://lkml.org/lkml/2013/2/19/52
